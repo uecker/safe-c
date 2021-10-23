@@ -1,0 +1,16 @@
+# Constant Expressions
+
+- expressions required to be integer constant expressons 6.6p6 (CTD)
+
+- constant expressions in initializers 6.6p7 (CTD)
+
+- arithmetic constant expression 6.6p8 (CTD)
+
+- address constant 6.6p9 (CTD)
+
+
+## Issues
+
+* definition of constant expressions based on UB
+* UB at translation time
+* when are constant expressions allowed to be evaluated? 
