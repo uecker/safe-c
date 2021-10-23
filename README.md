@@ -68,8 +68,21 @@ Example 3:
 		return 0;
 	}
   ```
+Example 4:
+  This example is safe because it uses checked integer functions introduced in [n2684](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2683.pdf)
+  ```
+  	int foo(int x)
+	{
+		int result;
+		
+		if (!ckd_add(&result, x, 1)
+			return result;
+
+		return 0;
+	}
+  ```
   
-Example 3 (race)
+Example 5 (race):
   This example is safe because 'static' guarantees that the access is valid (i.e. non-null, compatible effective type, not-end-of-life, correctly aligned).
   But need additonal assumptions that there is no race condition (i.e. no ther access or free using 'p').
   ```
