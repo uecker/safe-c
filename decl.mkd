@@ -1,0 +1,34 @@
+# Declarations
+
+- identifier for object with no linkage declared and type is incomplete after decl or init-decl (CTD)
+- function declared at block scope with explict storage-class other than extern (CTD)
+- struct or union without named members (CTD)
+- out-of-bounds for flexible array member 6.7.2.1 (!!!)
+- complete struct or union type is not completed in same scope 6.7.2.3 (CTD)
+- modification of const-qualified object 6.7.3 (!!!)
+- modification of volatile-object using non-volatile 6.7.3 (!!!)
+- function type with type qualifier 6.7.3 (CTD)
+- types required to be compatible differ by qualifiers 6.
+- restrict access violation 
+- restrict assignment violation
+- extern inline function not defined in same TU 
+- _Noreturn function returns (RTD)
+- differing alignment specifier (LTD)
+- differing alignment specifier 2 (LTD)
+- incompatible pointers
+
+- negative length VLA (RTD)
+  ```
+  int N = -1;
+  char vla[N];
+  ```
+  [GCC](https://godbolt.org/z/r9Tq3vxWs)
+  
+- arrays required to be compatible have different size
+- pointer passed to function [static] does not provide access (!!!)
+- storage class or qualifier for void as function parameter (CTD)
+- incompatible function types
+- value of unnames member of structure or union used
+- incorrect scalar initializer (CTD)
+- incorrect initializer for aggregate or union (CTD)
+  
