@@ -1,0 +1,5 @@
+
+
+C23 will be the next revison of the ISO C standard.
+
+The latest draft can be found here: [n2731](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2731.pdf)
