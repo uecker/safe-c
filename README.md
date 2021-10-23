@@ -53,7 +53,7 @@ Example 2 (trap):
   ```
 	int foo(int x)
 	{
-	  return x + 1;
+		return x + 1;
 	}
   ```
 
@@ -71,7 +71,7 @@ Example 3:
 Example 4:
   This example is safe because it uses checked integer functions introduced in [n2684](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2683.pdf)
   ```
-  	int foo(int x)
+	int foo(int x)
 	{
 		int result;
 		
@@ -118,10 +118,12 @@ Classification:
 
 * CTD: compile-time diagnosable
   This is diagnosable at a compile-time.
+* LTD: link-time diagnosable
+  This can be diagnosed at link time.
 * RTD: run-time diagnosable (without tracking additional state)
   This is diagnosable at run-time without tracking state which is expensive to track.
 * !!!: difficult to diagnose
-  This is expensive to diagnose because additional abstract machine state would have to be tracked (e.g. uninitialized memory, etc.)
+  This is expensive to diagnose because additional abstract machine state would have to be tracked (e.g. uninitialized memory, pointer provenance, etc.)
 
 
 Current working draft: [n2731](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2731.pdf)
