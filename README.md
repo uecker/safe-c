@@ -2,6 +2,8 @@
 
 The goal of this project is the definition of a provable safe subset of C. This is very preliminary and probably full of errors.
 
+The basis is the current working draft for [C23](./c23.mkd) and the draft for the [TS 6010](./ts6010.mkd).
+
 Our preliminary definition for safe code is:
 
 * There is no undefined behavior.
