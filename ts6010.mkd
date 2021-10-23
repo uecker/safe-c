@@ -1,0 +1,3 @@
+The draft for TS 6010 will describe a provenance-aware memory model for C.
+
+The lastest draft can be found here: [n2676](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2676.pdf)
