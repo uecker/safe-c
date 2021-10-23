@@ -1,0 +1,92 @@
+# Expressions
+
+## Arithmetic
+
+- exceptional condition 6.5p5 (RTD)
+  (result not mathematically defined or or representable in range of type)
+
+- division by zero 6.5.5p6 (RTD)
+  ```
+  x / 0
+  ```
+  [GCC](https://godbolt.org/z/x8P19fMjv)
+
+  ```
+  x % 0
+  ```
+  [GCC](https://godbolt.org/z/h9P9W4oqf)
+
+- a/b not representable 6.5.5p7 (RTD)
+
+- negative shift or shift larger than width of type 6.5.7p3 (RTD)
+  ```
+	(int)x >> 32
+  ```
+  [GCC](https://godbolt.org/z/v4KsGK11W)
+  ```
+	x >> -1
+  ```
+  [GCC](https://godbolt.org/z/9nhxPP9Pv)
+
+- shifts of signed type of negative value or resulting in overflow 6.5.7p4 (RTD)
+  ```
+  (int)-1 << 1
+  ```
+  [GCC](https://godbolt.org/z/6eET898G5)
+  ```
+  (int)1 << 31
+  ```
+  [GCC](https://godbolt.org/z/crGxc1YM9)
+
+## Pointers
+
+- function calls, 6.5.2.2p7,9 (!!!)
+
+- derefrencing an invalid pointer 6.5.3.2p4 (!!!)
+  - null pointer (RTD)
+  ```
+  *0;
+  ```
+  [GCC](https://godbolt.org/z/738vMaKof)
+  - address with insufficient alignment (RTD)
+  ```
+  char* p = malloc(1 + sizeof(int));
+  *(int*)(p + 1) = 1;
+  ```
+  [GCC](https://godbolt.org/z/3qff36xG9)
+  - pointer to object after end of its lifetime (!!!)
+  - ... ?
+
+- pointer conversion to other than pointer or integer 6.5.4 (CTD)
+  ```
+   void *p = ..
+   (struct { int x; })p;
+  ```
+  [GCC](https://godbolt.org/z/oP8zE5r97)
+
+- pointer addititon 6.5.6p9
+- pointer substraction 6.5.6p10 (RTD)
+
+- pointer comparison 6.5.8p6
+
+## Miscellaneous
+
+- sequence points 6.5p2 (CTD)
+  ```
+	(x = 1) + x
+  ```
+  [GCC](https://godbolt.org/z/dPzsfrThh)
+  
+- accessing member of atomic struct 6.5.2.3p5 (CTD)
+  ```
+  _Atomic struct foo { int x; } f;
+  f.x;
+  ```
+  [GCC](https://godbolt.org/z/dfPfG6Pj1)
+
+- overlapping assignment 6.5.16.1p3 (RTD)
+  ```
+  *p = *(struct foo)((char*)p + 1);
+  ```
+  [GCC!!!](https://godbolt.org/z/Pz5v1GP1x)
+  
