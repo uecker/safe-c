@@ -1,0 +1,40 @@
+# External Definitions
+
+- multiple definitions for identifiers with external linkage (or none if used) 6.9p5
+  
+  (linker error)
+  
+- adjusted parameter type in function definition is not a complete object type 6.9.2p7 (CTD)
+  ```
+  struct foo;
+  int foo(struct foo x)
+  {
+  }
+  ```
+  [GCC](https://godbolt.org/z/6nPWqfG8e) error
+
+- a variadic function not define with ellipsis notation 6.9.2p8 (CTD)
+  ```
+  int foo(int x)
+  {
+    va_list ap;
+    va_start(ap, x);
+  }
+  ```
+  [GCC](https://godbolt.org/z/fa4dzorhW) error
+
+- function reaches '}' but return value used by caller 6.9.2p12 (CTD)
+  ```
+  int foo(void)
+  {
+  }
+  int main()
+  {
+    return foo();
+  }
+  ```
+  [GCC](https://godbolt.org/z/jzWzznK4q) -Wreturn-type
+  
+- identifier with internal linkage and incomplete type with tentative definition 6.9.2.p3
+
+  [GCC](https://godbolt.org/z/x7xKsE6nM) warning
