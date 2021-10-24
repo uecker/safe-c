@@ -1,0 +1,27 @@
+# Annotations
+
+## Pointer Annotations
+```
+   int * [[safe-c::nonnull]] p; 
+```
+nonnull: pointer is not a null pointer
+alignment(A): pointer has minimal alignment (A)
+etype(T): effective type is T
+bound(N): pointer can access N elements
+
+dereferenceable: nonnull, alignment >= alignof(*p), bounds > 0, etype, correct provenance
+
+no-arithmetic: no pointer arithmetic allowed
+
+
+owner
+restrict
+
+null-terminated: points to a null-terminated string
+
+## Integer Annotations
+
+bounds
+
+## Structure / Union Annotations
+
