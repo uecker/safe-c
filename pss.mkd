@@ -1,0 +1,48 @@
+
+# Provable Safe Subset
+
+
+## Preconditions
+
+* No pointer is used by another thread
+* Pointers to functions are pointers to safe functions
+* Pointer to arrays declared with static are correct
+
+## Constraints
+
+* No casts (*)
+* No implicit conversions to void
+* No pointer arithmetic
+** except with constant within known bounds
+** except array access within known bound
+* No calls to functions without prototypes
+* No sizeof on pointer declared on array
+* No end-of-function returns for functions returning a value
+* No unions (*)
+* No VLAs on the stack (*)
+* No stores or pointers
+* No returns of pointers
+* No unhandled switch cases
+* No goto into scope of variables
+* No address of potentially uninitialized variables
+* No thread creation (*)
+* No variadic calls or callees (*)
+* No setjmp/longjmp
+
+
+## State
+
+* Uninitialized / initialized
+* Parameter ranges
+* Null / non-null
+
+## Examples
+
+```
+int foo(int i, int N, int a[static N])
+{
+  if ((0 <= i) && (i < N))
+    retun a[i];
+  return 0;
+}
+```
