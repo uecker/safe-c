@@ -10,31 +10,46 @@
 
 ## Constraints
 
+### Static
+
 * No casts (*)
 * No implicit conversions to void
-* No pointer arithmetic
-** except with constant within known bounds
-** except array access within known bound
 * No calls to functions without prototypes
 * No sizeof on pointer declared on array
+* No sizeof on struct with flexible-array member
 * No end-of-function returns for functions returning a value
 * No unions (*)
-* No VLAs on the stack (*)
-* No stores or pointers
+* No stores of pointers
 * No returns of pointers
-* No unhandled switch cases
 * No goto into scope of variables
-* No address of potentially uninitialized variables
 * No thread creation (*)
 * No variadic calls or callees (*)
 * No setjmp/longjmp
+* No access to external objects
 
+### State-Dependent
 
+* No VLAs on the stack (*)
+* No unhandled switch cases
+* No address of potentially uninitialized variables
+* No read of uninitialized variable
+* No pointer arithmetic
+  * except with constant within known bounds
+  * except array access within known bound
+  
 ## State
 
-* Uninitialized / initialized
-* Parameter ranges
-* Null / non-null
+Tracked per source statement. Changes tracket until 
+
+All automatic variables:
+* initialized / not-known-to-be-initialized
+
+Integers:
+* Parameter range
+
+Pointers:
+* Bounds
+* Non-null / not-known-to-be-non-null
 
 ## Examples
 
