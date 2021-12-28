@@ -4,7 +4,8 @@
 - function declared at block scope with explict storage-class other than extern (CTD)
 - struct or union without named members (CTD)
 - out-of-bounds for flexible array member 6.7.2.1 (!!!)
-- complete struct or union type is not completed in same scope 6.7.2.3 (CTD)
+- incomplete struct or union type is not completed in same scope when needed 6.7.2.3 (CTD)
+  ? There are more specific rules, when does this apply?
 - modification of const-qualified object 6.7.3 (!!!)
 - modification of volatile-object using non-volatile 6.7.3 (!!!)
 - function type with type qualifier 6.7.3 (CTD)
