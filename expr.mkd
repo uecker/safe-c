@@ -3,7 +3,7 @@
 ## Arithmetic
 
 - exceptional condition 6.5p5 (RTD)
-  (result not mathematically defined or or representable in range of type)
+  (result not mathematically defined or representable in range of type)
 
 - division by zero 6.5.5p6 (RTD)
   ```
@@ -17,6 +17,10 @@
   [GCC](https://godbolt.org/z/h9P9W4oqf)
 
 - a/b not representable 6.5.5p7 (RTD)
+  ```
+  INT_MIN / -1
+  ```
+  [GCC](https://godbolt.org/z/98b14h8WY)
 
 - negative shift or shift larger than width of type 6.5.7p3 (RTD)
   ```
