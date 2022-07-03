@@ -1,0 +1,10 @@
+
+
+All pointers to objects declared with const qualifiers have a qualifier on the target type.
+  - maintained by not having casts that discard the qualifier
+  - special rule for certain library functions
+
+
+
+
+
